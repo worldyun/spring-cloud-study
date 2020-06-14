@@ -1,0 +1,31 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-hystrix-payment-service
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: org.gjt.mm.mysql.Driver
+#    url: jdbc:mysql://worldyun.xyz:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: springcloud
+#    password: d6aXKPeYe3PkDSB7
+
+eureka:
+  client:
+    #true 将自己注册进euraka server，默认为true
+    register-with-eureka: true
+    #true 是否从eureka server 抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      #设置与rereka server 交互的地址，查询服务和注册服务都要依赖这个地址
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: hystrix-payment8001
+    prefer-ip-address: true
+
+
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.atguigu.springcloud.entities
